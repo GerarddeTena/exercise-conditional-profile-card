@@ -29,14 +29,25 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  const getFullName = () => {
+    let name = ` ${variables.name ? variables.name : "Name"}`;
+    let lastName = ` ${variables.lastName ? variables.lastName : "Last Name"}`;
+
+    return `${name} ${lastName}`;
+  };
+
+  let city = ` ${variables.city ? variables.city : "City"}`;
+  let country = ` ${variables.country ? variables.country : "Country"}`;
+  let role = ` ${variables.role ? variables.role : "Role"}`;
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
+          <h1>${getFullName()}</h1>
+          <h2>${role}</h2>
+          <h3>${city}, ${country}</h3>
+          <ul class="${variables.socialMediaPosition}">
             <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
             <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
             <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
@@ -45,7 +56,6 @@ function render(variables = {}) {
         </div>
     `;
 }
-
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
  */
@@ -54,9 +64,9 @@ window.onload = function() {
     // if includeCover is true the algorithm should show the cover image
     includeCover: true,
     // this is the image's url that will be used as a background for the profile cover
-    background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
+    background: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS65Tygxo0W-pl0uqrCYpLT5LKfnD9P0ohxnsIKohY9&s",
     // this is the url for the profile avatar
-    avatarURL: "https://randomuser.me/api/portraits/women/42.jpg",
+    avatarURL: "https://static.wikia.nocookie.net/kittyquest-wiki/images/1/1e/Interrogante-negro.png/revision/latest?cb=20200130131952&path-prefix=es",
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
